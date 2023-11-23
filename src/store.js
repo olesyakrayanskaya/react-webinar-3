@@ -46,7 +46,7 @@ class Store {
       ...this.state,
       list: [
         ...this.state.list,
-        { code: this.state.lastId, title: 'Новая запись' },
+        { code: this.state.lastId, title: 'Новая запись', selection: 0},
       ],
       lastId: this.state.lastId + 1,
     });
@@ -76,6 +76,7 @@ class Store {
         }
         if (item.code === code) {
           item.selected = !item.selected;
+          item.selection = item.selection + 1;
         }
         return item;
       }),

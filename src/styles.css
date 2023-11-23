@@ -37,6 +37,7 @@ body {
 .Item {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   transition: background-color 1s;
 }
 
@@ -47,15 +48,26 @@ body {
 
 .Item-code {
   padding: 20px 10px 20px 20px;
+  width: 20px;
 }
 
 .Item-title {
-  width: 100%;
   padding: 20px 10px;
+}
+
+.Item-selection {
+  margin-left: 25px;
+  font-size: 14px;
+  color: #858383;
+}
+
+.Item_selected > .Item-selection {
+  color: #fff;
 }
 
 .Item-actions {
   display: flex;
   justify-content: flex-end;
   padding: 20px 20px 20px 10px;
+  margin-left: auto;
 }

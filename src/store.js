@@ -46,8 +46,9 @@ class Store {
       ...this.state,
       list: [
         ...this.state.list,
-        { code: this.state.list.length + 1, title: 'Новая запись' },
+        { code: this.state.lastId, title: 'Новая запись' },
       ],
+      lastId: this.state.lastId + 1,
     });
   }
 

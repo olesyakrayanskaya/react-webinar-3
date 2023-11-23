@@ -55,16 +55,6 @@ body {
   padding: 20px 10px;
 }
 
-.Item-selection {
-  margin-left: 25px;
-  font-size: 14px;
-  color: #858383;
-}
-
-.Item_selected > .Item-selection {
-  color: #fff;
-}
-
 .Item-actions {
   display: flex;
   justify-content: flex-end;

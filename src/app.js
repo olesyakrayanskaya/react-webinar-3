@@ -41,7 +41,7 @@ function App({store}) {
                 <div className="Item-title">{item.title}</div>
                 {item.selection > 0 && (
                   <div className="Item-selection">
-                    Выделяли {item.selection} {textSelection(item.selection)}
+                    | Выделяли {item.selection} {textSelection(item.selection)}
                   </div>
                 )}
                 <div className="Item-actions">

@@ -13,12 +13,20 @@ function App({store}) {
 
   function textSelection(n) {
     let text;
-    if (n === 12 || n === 13 || n === 14) {
-      text = 'раз';
-    } else if (n % 10 === 2 || n % 10 === 3 || n % 10 === 4) {
-      text = 'раза';
+    if (n < 100) {
+      if (n === 12 || n === 13 || n === 14) {
+        text = 'раз';
+      } else if (n % 10 === 2 || n % 10 === 3 || n % 10 === 4) {
+        text = 'раза';
+      } else {
+        text = 'раз';
+      }
     } else {
-      text = 'раз';
+      if (n % 100 === 2 || n % 100 === 3 || n % 100 === 4) {
+        text = 'раза';
+      } else {
+        text = 'раз';
+      }
     }
     return text;
   }

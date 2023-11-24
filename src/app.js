@@ -13,7 +13,9 @@ function App({store}) {
 
   function textSelection(n) {
     let text;
-    if (n === 2 || n === 3 || n === 4) {
+    if (n === 12 || n === 13 || n === 14) {
+      text = 'раз';
+    } else if (n % 10 === 2 || n % 10 === 3 || n % 10 === 4) {
       text = 'раза';
     } else {
       text = 'раз';

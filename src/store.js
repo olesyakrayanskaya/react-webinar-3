@@ -76,7 +76,9 @@ class Store {
         }
         if (item.code === code) {
           item.selected = !item.selected;
-          item.selection = item.selection + 1;
+          if (item.selected) {
+            item.selection = item.selection + 1;
+          }
         }
         return item;
       }),

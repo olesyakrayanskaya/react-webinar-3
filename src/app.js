@@ -1,5 +1,5 @@
 import React from 'react';
-import {createElement} from './utils.js';
+import {pluralize} from './utils.js';
 import './styles.css';
 
 /**
@@ -9,27 +9,7 @@ import './styles.css';
  */
 function App({store}) {
 
-  const list = store.getState().list;
-
-  function textSelection(n) {
-    let text;
-    if (n < 100) {
-      if (n === 12 || n === 13 || n === 14) {
-        text = 'раз';
-      } else if (n % 10 === 2 || n % 10 === 3 || n % 10 === 4) {
-        text = 'раза';
-      } else {
-        text = 'раз';
-      }
-    } else {
-      if (n % 100 === 2 || n % 100 === 3 || n % 100 === 4) {
-        text = 'раза';
-      } else {
-        text = 'раз';
-      }
-    }
-    return text;
-  }
+  const list = store.getState().list;  
 
   return (
     <div className="App">
@@ -51,7 +31,7 @@ function App({store}) {
                 <div className="Item-title">{item.title}</div>
                 {item.selection > 0 && (
                   <div className="Item-selection">
-                    | Выделяли {item.selection} {textSelection(item.selection)}
+                    | Выделяли {item.selection} {pluralize(item.selection, ['раз', 'раза', 'раз'])}
                   </div>
                 )}
                 <div className="Item-actions">

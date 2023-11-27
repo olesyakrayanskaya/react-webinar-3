@@ -3,6 +3,9 @@
  */
 class Store {
   constructor(initState = {}) {
+    for (const record of initState.list) {
+      initState.lastId = Math.max(initState.lastId, record.code + 1);
+    }
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
   }
@@ -34,6 +37,7 @@ class Store {
    */
   setState(newState) {
     this.state = newState;
+
     // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
   }
@@ -46,7 +50,7 @@ class Store {
       ...this.state,
       list: [
         ...this.state.list,
-        { code: this.state.lastId, title: 'Новая запись', selection: 0},
+        { code: this.state.lastId, title: 'Новая запись', selection: 0 },
       ],
       lastId: this.state.lastId + 1,
     });
@@ -56,7 +60,7 @@ class Store {
    * Удаление записи по коду
    * @param code
    */
-  deleteItem(code) {    
+  deleteItem(code) {
     this.setState({
       ...this.state,
       list: this.state.list.filter((item) => item.code !== code),

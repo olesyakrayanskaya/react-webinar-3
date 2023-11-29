@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import './style.css';
 
-function Controls({onAdd}) {
+function Controls() {
+
+  let [cartOpen, setCartOpen] = useState(false);
+
   return (
     <div className='Controls'>
-      <button onClick={() => onAdd()}>Добавить</button>
+      <span className='Controls-text'>В корзине: </span>
+      <span className='Controls-count'>2 товара / </span>
+      <span className='Controls-sum'>223 ₽</span>
+      <button onClick={() => setCartOpen(cartOpen = !cartOpen)}>Перейти</button>
     </div>
   )
 }

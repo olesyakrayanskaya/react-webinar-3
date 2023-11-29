@@ -1,5 +1,26 @@
 .Controls {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
   padding: 20px;
+  border-bottom: 1px dashed #ccc;
+  color: #000;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.Controls-text {
+  font-weight: 400;
+}
+
+.Controls-count {
+  margin-left: 15px;
+}
+
+.Controls-sum {
+  margin-right: 20px;
+  margin-left: 5px;
 }

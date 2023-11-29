@@ -1,7 +1,12 @@
 .Item {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   transition: background-color 1s;
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .Item_selected {
@@ -14,8 +19,16 @@
 }
 
 .Item-title {
-  width: 100%;
   padding: 20px 10px;
+  color: #000;
+  font-size: 16px;
+}
+
+.Item-price {
+  margin-left: auto;
+  margin-right: 24px;
+  color: #404040;
+  font-size: 18px;
 }
 
 .Item-actions {

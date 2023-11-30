@@ -11,7 +11,7 @@ function Controls({onCartOpen, inCartList}) {
   .map((item) => item.count * item.good.price)
   .reduce((partialSum, a) => partialSum + a, 0); 
   
-  if (inCartList.length > 0) {
+  if (count > 0) {
     return (
       <div className="Controls">
         <span className="Controls-text">В корзине: </span>

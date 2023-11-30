@@ -23,12 +23,12 @@ function Controls({onCartOpen, inCartList}) {
             one: 'товар',
             few: 'товара',
             many: 'товаров',
-          })}
+          }) + ' /'}
       </span>
       <span className="Controls-sum">
         {sum.toLocaleString() + ' ₽'}
       </span>
-      <button onClick={onCartOpen}>Перейти</button>
+      <button className="Controls-btn" onClick={onCartOpen}>Перейти</button>
     </div>
   );
 }

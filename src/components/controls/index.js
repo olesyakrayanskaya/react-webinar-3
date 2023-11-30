@@ -5,9 +5,7 @@ import { plural } from "../../utils";
 
 function Controls({onCartOpen, inCartList}) {
 
-  let count = inCartList
-    .map((item) => item.count)
-    .reduce((partialSum, a) => partialSum + a, 0);
+  let count = inCartList.length;
 
   let sum = inCartList
   .map((item) => item.count * item.good.price)

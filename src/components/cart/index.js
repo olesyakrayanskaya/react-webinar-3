@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Item from '../item';
 import './style.css';
+import CartItem from '../cart-item';
 
 function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
   return (
@@ -14,7 +14,7 @@ function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
         <div className="Cart-items">
         {inCartList.map((item) => (
           <div key={item.code} className="Cart-item">
-            <Item item={item} onDeleteItemInCart={onDeleteItemInCart} />
+            <CartItem item={item} onDeleteItemInCart={onDeleteItemInCart} />
           </div>
         ))}
         </div>

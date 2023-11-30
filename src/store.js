@@ -46,7 +46,7 @@ class Store {
   addItemToCart(item) {
     this.setState({
       ...this.state,
-      inCartList: [...this.state.inCartList, {...item}]
+      inCartList: [...this.state.inCartList, item]
     })
   };
 

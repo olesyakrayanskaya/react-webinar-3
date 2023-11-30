@@ -17,9 +17,9 @@
     margin: calc(50vh - 203px) auto;
     background-color: #fff;
     width: 960px;
-    height: 407px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+    padding-bottom: 89px;
 }
 
 .Cart-header {
@@ -41,6 +41,10 @@
     border-bottom: 1px dashed #ccc;
     margin-top: 71px;
     margin-bottom: 20px;
+}
+
+.Cart-item {
+    border-bottom: 1px dashed #ccc;
 }
 
 .Cart-footer {

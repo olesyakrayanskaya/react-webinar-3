@@ -1,0 +1,37 @@
+.Cart-item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .Cart-item-code {
+    padding: 20px 10px 20px 20px;
+  }
+  
+  .Cart-item-title {
+    padding: 20px 10px;
+    color: #000;
+    font-size: 16px;
+  }
+  
+  .Cart-item-price,
+  .Cart-item-count  {
+    margin-right: 24px;
+    color: #404040;
+    font-size: 18px;
+  }
+
+  .Cart-item-price {
+    margin-left: auto;
+  }
+  
+  .Cart-item-actions {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 20px 20px 10px;
+  }
+  

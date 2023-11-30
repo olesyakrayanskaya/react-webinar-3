@@ -5,8 +5,8 @@ import './style.css';
 function Item(props) {
 
   const callbacks = {
-    onAdd: () => {
-      props.onAdd(props.item);
+    onAdd: (item) => {
+      props.onAddItemToCart(item);
     },
   };
 
@@ -18,7 +18,7 @@ function Item(props) {
         {props.item.price.toLocaleString() + ' ₽'}
       </div>
       <div className="Item-actions">
-        <button onClick={() => {callbacks.onAdd}}>Добавить</button>
+        <button onClick={() => {callbacks.onAdd(props.item)}}>Добавить</button>
       </div>
     </div>
   );

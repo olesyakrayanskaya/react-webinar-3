@@ -23,8 +23,8 @@ function App({ store }) {
       [store]
     ),
 
-    onAddItemToCart: useCallback(() => {
-      store.addItemToCart();
+    onAddItemToCart: useCallback((item) => {
+      store.addItemToCart(item);
     }, [store]),
 
     onCartOpen: useCallback(() => {

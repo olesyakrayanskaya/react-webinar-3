@@ -4,6 +4,11 @@ import './style.css';
 import CartItem from '../cart-item';
 
 function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
+
+  let sum = inCartList
+  .map((item) => item.count * item.good.price)
+  .reduce((partialSum, a) => partialSum + a, 0); 
+
   return (
     <div className={cartIsOpen ? 'Cart' : 'Cart Cart--hidden'}>
       <div className="Cart-inner">
@@ -26,11 +31,7 @@ function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
         </div>
         <div className="Cart-footer">
           <span className="Cart-text">Итого</span>
-          <span className="Cart-sum">
-            {inCartList
-              .map((item) => item.count * item.good.price)
-              .reduce((partialSum, a) => partialSum + a, 0).toLocaleString() + ' ₽'}
-          </span>
+          <span className="Cart-sum">{sum.toLocaleString() + ' ₽'}</span>
         </div>
       </div>
     </div>

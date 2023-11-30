@@ -28,12 +28,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 30px 0 20px;
     border-radius: 10px 10px 0 0;
+}
+
+.Cart-title {
+    font-size: 32px;
 }
 
 .Cart-close {
     cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid #767676;
+    background: #EFEFEF;
+    width: 76px;
+    height: 21px;
 }
 
 .Cart-items {

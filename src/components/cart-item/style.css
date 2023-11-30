@@ -20,18 +20,31 @@
   
   .Cart-item-price,
   .Cart-item-count  {
-    margin-right: 24px;
     color: #404040;
     font-size: 18px;
   }
 
+  .Cart-item-count  {
+    margin-right: 18px;
+  }
+
   .Cart-item-price {
     margin-left: auto;
+    margin-right: 60px;
   }
   
   .Cart-item-actions {
     display: flex;
     justify-content: flex-end;
     padding: 20px 20px 20px 10px;
+  }
+
+  .Cart-item-btn {
+    width: 76px;
+    height: 22px;
+    cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid #767676;
+    background: #EFEFEF;
   }
   

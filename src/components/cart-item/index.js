@@ -19,7 +19,7 @@ function CartItem(props) {
       </div>
       <div className="Cart-item-count">{props.count} шт</div>
       <div className="Cart-item-actions">
-        <button onClick={() => {callbacks.onDel(props.item.good.code)}}>Удалить</button>
+        <button className="Cart-item-btn" onClick={() => {callbacks.onDel(props.item.good.code)}}>Удалить</button>
       </div>
     </>
   );

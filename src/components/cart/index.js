@@ -3,20 +3,20 @@ import PropTypes from 'prop-types';
 import Item from '../item';
 import './style.css';
 
-function Cart({ cartList, onDeleteItem }) {
+function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
   return (
-    <div className="Cart">
+    <div className={cartIsOpen ? "Cart" : "Cart Cart--hidden"}>
       <div className="Cart-inner">
         <div className="Cart-header">
           <h1 className="Cart-title">Корзина</h1>
-          <button className="Cart-close">Закрыть</button>
+          <button className="Cart-close" onClick={onCartOpen}>Закрыть</button>
         </div>
         <div className="Cart-items">
-        {/* {cartList.map((item) => (
+        {inCartList.map((item) => (
           <div key={item.code} className="Cart-item">
-            <Item item={item} onDelete={onDeleteItem} />
+            <Item item={item} onDeleteItemInCart={onDeleteItemInCart} />
           </div>
-        ))} */}
+        ))}
         </div>
         <div className="Cart-footer">
           <span className="Cart-text">Итого</span>
@@ -28,16 +28,18 @@ function Cart({ cartList, onDeleteItem }) {
 }
 
 Cart.propTypes = {
-  cartList: PropTypes.arrayOf(
+  inCartList: PropTypes.arrayOf(
     PropTypes.shape({
       code: PropTypes.number,
     })
   ).isRequired,
-  onDeleteItem: PropTypes.func,
+  onDeleteItemInCart: PropTypes.func,
+  onCartOpen: PropTypes.func,
 };
 
 Cart.defaultProps = {
-  onDeleteItem: () => {},
+  onDeleteItemInCart: () => {},
+  onCartOpen: () => {},
 };
 
 export default React.memo(Cart);

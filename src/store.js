@@ -43,10 +43,22 @@ class Store {
   /**
    * Добавление новой записи
    */
-  addItemToCart(item) {
+  addItemToCart(good) { 
+    let found;
+    this.state.inCartList.forEach(element => {
+      if(element.good.code === good.code) {
+        found = element;        
+      }      
+    });
+    if(found) {
+      found.count+=1;
+    } else {
+      found = {good: good, count: 1}
+    }  
+
     this.setState({
       ...this.state,
-      inCartList: [...this.state.inCartList, item]
+      inCartList: [...this.state.inCartList.filter(item => item.good.code !== found.good.code), found]
     })
   };
 
@@ -58,7 +70,7 @@ class Store {
     this.setState({
       ...this.state,
       // Новый список, в котором не будет удаляемой записи
-      inCartList: this.state.inCartList.filter(item => item.code !== code)
+      inCartList: this.state.inCartList.filter(item => item.good.code !== code)
     })
   };
 }

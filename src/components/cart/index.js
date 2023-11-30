@@ -5,22 +5,32 @@ import CartItem from '../cart-item';
 
 function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
   return (
-    <div className={cartIsOpen ? "Cart" : "Cart Cart--hidden"}>
+    <div className={cartIsOpen ? 'Cart' : 'Cart Cart--hidden'}>
       <div className="Cart-inner">
         <div className="Cart-header">
           <h1 className="Cart-title">Корзина</h1>
-          <button className="Cart-close" onClick={onCartOpen}>Закрыть</button>
+          <button className="Cart-close" onClick={onCartOpen}>
+            Закрыть
+          </button>
         </div>
         <div className="Cart-items">
-        {inCartList.map((item) => (
-          <div key={item.code} className="Cart-item">
-            <CartItem item={item} onDeleteItemInCart={onDeleteItemInCart} />
-          </div>
-        ))}
+          {inCartList.map((item) => (
+            <div key={item.good.code} className="Cart-item">
+              <CartItem
+                item={item}
+                count={item.count}
+                onDeleteItemInCart={onDeleteItemInCart}
+              />
+            </div>
+          ))}
         </div>
         <div className="Cart-footer">
           <span className="Cart-text">Итого</span>
-          <span className="Cart-sum">223 ₽</span>
+          <span className="Cart-sum">
+            {inCartList
+              .map((item) => item.count * item.good.price)
+              .reduce((partialSum, a) => partialSum + a, 0).toLocaleString() + ' ₽'}
+          </span>
         </div>
       </div>
     </div>

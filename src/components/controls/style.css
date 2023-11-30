@@ -20,6 +20,11 @@
   margin-left: 15px;
 }
 
+.Controls-empty {
+  margin-left: 10px;
+  margin-right: 15px;
+}
+
 .Controls-sum {
   margin-right: 20px;
   margin-left: 5px;

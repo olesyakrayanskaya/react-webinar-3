@@ -36,6 +36,7 @@ function App({ store }) {
   return (
     <PageLayout>
       <Modal modalIsOpen={modalIsOpen}>
+        <Head title={"Корзина"} modalIsOpen={modalIsOpen} onCartOpen={callbacks.onCartOpen} />
         <Cart
           inCartList={inCartList}
           onDeleteItemInCart={callbacks.onDeleteItemInCart}

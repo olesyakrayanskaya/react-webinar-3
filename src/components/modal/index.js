@@ -12,6 +12,7 @@ function Modal({ modalIsOpen, children }) {
 
 Modal.propTypes = {
   children: PropTypes.node,
+  modalIsOpen: PropTypes.bool,
 };
 
 export default React.memo(Modal);

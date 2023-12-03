@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 import CartItem from '../cart-item';
+import Head from '../head';
 
-function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
+function Cart({ inCartList, onDeleteItemInCart, onCartOpen, modalIsOpen}) {
 
   let sum = inCartList
   .map((item) => item.count * item.good.price)
@@ -11,12 +12,12 @@ function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
 
   return (
     <>
-      <div className="Cart-header">
+      {/* <div className="Cart-header">
         <h1 className="Cart-title">Корзина</h1>
         <button className="Cart-close" onClick={onCartOpen}>
           Закрыть
         </button>
-      </div>
+      </div> */}
       <div className="Cart-items">
         {inCartList.map((item) => (
           <div key={item.good.code} className="Cart-item">

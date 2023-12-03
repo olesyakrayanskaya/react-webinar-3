@@ -2,8 +2,9 @@ import React, { useCallback, useState } from 'react';
 import List from './components/list';
 import Controls from './components/controls';
 import Head from './components/head';
-import PageLayout from './components/page-layout';
+import Modal from './components/modal';
 import Cart from './components/cart';
+import PageLayout from './components/page-layout';
 
 /**
  * Приложение
@@ -11,7 +12,7 @@ import Cart from './components/cart';
  * @returns {React.ReactElement}
  */
 function App({ store }) {
-  const [cartIsOpen, setCartIsOpen] = useState(false);
+  const [modalIsOpen, setmodalIsOpen] = useState(false);
   const list = store.getState().list;
   const inCartList = store.getState().inCartList;
 
@@ -28,18 +29,19 @@ function App({ store }) {
     }, [store]),
 
     onCartOpen: useCallback(() => {
-      setCartIsOpen(!cartIsOpen);
-    }, [cartIsOpen]),
+      setmodalIsOpen(!modalIsOpen);
+    }, [modalIsOpen]),
   };
 
   return (
     <PageLayout>
-      <Cart
-        cartIsOpen={cartIsOpen}
-        inCartList={inCartList}
-        onDeleteItemInCart={callbacks.onDeleteItemInCart}
-        onCartOpen={callbacks.onCartOpen}
-      ></Cart>
+      <Modal modalIsOpen={modalIsOpen}>
+        <Cart
+          inCartList={inCartList}
+          onDeleteItemInCart={callbacks.onDeleteItemInCart}
+          onCartOpen={callbacks.onCartOpen}
+        ></Cart>
+      </Modal>
       <Head title="Магазин" />
       <Controls inCartList={inCartList} onCartOpen={callbacks.onCartOpen} />
       <List list={list} onAddItemToCart={callbacks.onAddItemToCart} />

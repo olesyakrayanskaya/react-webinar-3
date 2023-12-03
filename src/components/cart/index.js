@@ -10,31 +10,29 @@ function Cart({ inCartList, onDeleteItemInCart, onCartOpen, cartIsOpen}) {
   .reduce((partialSum, a) => partialSum + a, 0); 
 
   return (
-    <div className={cartIsOpen ? 'Cart' : 'Cart Cart--hidden'}>
-      <div className="Cart-inner">
-        <div className="Cart-header">
-          <h1 className="Cart-title">Корзина</h1>
-          <button className="Cart-close" onClick={onCartOpen}>
-            Закрыть
-          </button>
-        </div>
-        <div className="Cart-items">
-          {inCartList.map((item) => (
-            <div key={item.good.code} className="Cart-item">
-              <CartItem
-                item={item}
-                count={item.count}
-                onDeleteItemInCart={onDeleteItemInCart}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="Cart-footer">
-          <span className="Cart-text">Итого</span>
-          <span className="Cart-sum">{sum.toLocaleString() + ' ₽'}</span>
-        </div>
+    <>
+      <div className="Cart-header">
+        <h1 className="Cart-title">Корзина</h1>
+        <button className="Cart-close" onClick={onCartOpen}>
+          Закрыть
+        </button>
       </div>
-    </div>
+      <div className="Cart-items">
+        {inCartList.map((item) => (
+          <div key={item.good.code} className="Cart-item">
+            <CartItem
+              item={item}
+              count={item.count}
+              onDeleteItemInCart={onDeleteItemInCart}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="Cart-footer">
+        <span className="Cart-text">Итого</span>
+        <span className="Cart-sum">{sum.toLocaleString() + ' ₽'}</span>
+      </div>
+    </>
   );
 }
 

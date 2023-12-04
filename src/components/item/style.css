@@ -31,6 +31,10 @@
   font-size: 18px;
 }
 
+.Item-price--cart {
+  margin-right: 60px;
+}
+
 .Item-count  {
   margin-right: 18px;
 }
@@ -43,4 +47,6 @@
 
 .Item-btn {
   cursor: pointer;
+  width: 76px;
+  height: 21px;
 }

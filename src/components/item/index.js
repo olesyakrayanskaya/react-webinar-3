@@ -15,7 +15,11 @@ function Item(props) {
     <div className="Item">
       <div className="Item-code">{props.item.code}</div>
       <div className="Item-title">{props.item.title}</div>
-      <div className="Item-price">
+      <div
+        className={
+          props.option === 'cart' ? 'Item-price Item-price--cart' : 'Item-price'
+        }
+      >
         {props.item.price.toLocaleString() + ' ₽'}
       </div>
       {props.option === 'cart' && (

@@ -9,6 +9,7 @@ function Item(props) {
       props.onAddItemToCart(item);
     },
   };
+  const buttonValue = props.option === 'cart' ? 'Удалить' : 'Добавить';
 
   return (
     <div className="Item">
@@ -17,8 +18,20 @@ function Item(props) {
       <div className="Item-price">
         {props.item.price.toLocaleString() + ' ₽'}
       </div>
+      {props.option === 'cart' && (
+        <div className="Item-count">
+          {props.item.count.toLocaleString() + ' шт'}
+        </div>
+      )}
       <div className="Item-actions">
-        <button className="Item-btn" onClick={() => {callbacks.onAdd(props.item)}}>Добавить</button>
+        <button
+          className="Item-btn"
+          onClick={() => {
+            callbacks.onAdd(props.item);
+          }}
+        >
+          {buttonValue}
+        </button>
       </div>
     </div>
   );
@@ -28,6 +41,8 @@ Item.propTypes = {
   item: PropTypes.shape({
     code: PropTypes.number,
     title: PropTypes.string,
+    price: PropTypes.number,
+    count: PropTypes.number,
   }).isRequired,
   onAdd: PropTypes.func,
 };

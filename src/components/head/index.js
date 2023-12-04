@@ -4,7 +4,7 @@ import './style.css';
 
 function Head({title, modalIsOpen, onCartOpen}) {
   return (
-    <div className="Head">
+    <div className={modalIsOpen ? 'Head Head--modal' : 'Head'}>
       <h1>{title}</h1>
       <button
         className={modalIsOpen ? 'Head-btn' : 'Head-btn Head-btn--hidden'}

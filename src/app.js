@@ -4,7 +4,6 @@ import Controls from './components/controls';
 import Head from './components/head';
 import Modal from './components/modal';
 import Footer from './components/footer';
-import Cart from './components/cart';
 import PageLayout from './components/page-layout';
 
 /**
@@ -15,18 +14,20 @@ import PageLayout from './components/page-layout';
 function App({ store }) {
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   const list = store.getState().list;
-  const inCartList = store.getState().inCartList;
+  const goods = store.getState().goods;
+  const totalSum = store.getTotalSum();
+  const totalCount = store.getTotalCount();
 
   const callbacks = {
-    onDeleteItemInCart: useCallback(
+    onDeleteGoods: useCallback(
       (code) => {
-        store.deleteItemInCart(code);
+        store.deleteGoods(code);
       },
       [store]
     ),
 
-    onAddItemToCart: useCallback((item) => {
-      store.addItemToCart(item);
+    onAddGoods: useCallback((code) => {
+      store.addGoods(code);
     }, [store]),
 
     onCartOpen: useCallback(() => {
@@ -38,16 +39,12 @@ function App({ store }) {
     <PageLayout>
       <Modal modalIsOpen={modalIsOpen}>
         <Head title={"Корзина"} modalIsOpen={modalIsOpen} onCartOpen={callbacks.onCartOpen} />
-        <Footer modalIsOpen={modalIsOpen}/>
-        <Cart
-          inCartList={inCartList}
-          onDeleteItemInCart={callbacks.onDeleteItemInCart}
-          onCartOpen={callbacks.onCartOpen}
-        ></Cart>
+        <List list={goods} onClick={callbacks.onDeleteGoods} option={'cart'} />
+        <Footer modalIsOpen={modalIsOpen} totalSum={totalSum}/>
       </Modal>
       <Head title="Магазин" />
-      <Controls inCartList={inCartList} onCartOpen={callbacks.onCartOpen} />
-      <List list={list} onAddItemToCart={callbacks.onAddItemToCart} />
+      <Controls totalCount={totalCount} onCartOpen={callbacks.onCartOpen} totalSum={totalSum} />
+      <List list={list} onClick={callbacks.onAddGoods} />
     </PageLayout>
   );
 }

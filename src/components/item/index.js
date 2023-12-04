@@ -5,8 +5,8 @@ import './style.css';
 function Item(props) {
 
   const callbacks = {
-    onAdd: (item) => {
-      props.onAddItemToCart(item);
+    onClick: (item) => {
+      props.onClick(item);
     },
   };
   const buttonValue = props.option === 'cart' ? 'Удалить' : 'Добавить';
@@ -27,7 +27,7 @@ function Item(props) {
         <button
           className="Item-btn"
           onClick={() => {
-            callbacks.onAdd(props.item);
+            callbacks.onClick(props.item);
           }}
         >
           {buttonValue}
@@ -44,7 +44,7 @@ Item.propTypes = {
     price: PropTypes.number,
     count: PropTypes.number,
   }).isRequired,
-  onAdd: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 Item.defaultProps = {

@@ -3,29 +3,23 @@ import PropTypes from 'prop-types';
 import './style.css';
 import { plural } from "../../utils";
 
-function Controls({onCartOpen, inCartList}) {
+function Controls({totalCount, onCartOpen, totalSum}) {
 
-  let count = inCartList.length;
-
-  let sum = inCartList
-  .map((item) => item.count * item.good.price)
-  .reduce((partialSum, a) => partialSum + a, 0); 
-  
-  if (count > 0) {
+  if (totalCount) {
     return (
       <div className="Controls">
         <span className="Controls-text">В корзине: </span>
         <span className="Controls-count">
-          {count.toLocaleString() +
+          {totalCount.toLocaleString() +
             ' ' +
-            plural(count, {
+            plural(totalCount, {
               one: 'товар',
               few: 'товара',
               many: 'товаров',
             }) +
             ' /'}
         </span>
-        <span className="Controls-sum">{sum.toLocaleString() + ' ₽'}</span>
+        <span className="Controls-sum">{totalSum.toLocaleString() + ' ₽'}</span>
         <button className="Controls-btn" onClick={onCartOpen}>
           Перейти
         </button>
@@ -46,7 +40,9 @@ function Controls({onCartOpen, inCartList}) {
 }
 
 Controls.propTypes = {
-  onCartOpen: PropTypes.func
+  onCartOpen: PropTypes.func,
+  totalSum: PropTypes.number,
+  totalCount: PropTypes.number,
 };
 
 Controls.defaultProps = {

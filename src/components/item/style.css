@@ -31,6 +31,10 @@
   font-size: 18px;
 }
 
+.Item-count  {
+  margin-right: 18px;
+}
+
 .Item-actions {
   display: flex;
   justify-content: flex-end;

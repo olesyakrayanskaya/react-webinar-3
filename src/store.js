@@ -16,8 +16,8 @@ class Store {
     this.listeners.push(listener);
     // Возвращается функция для удаления добавленного слушателя
     return () => {
-      this.listeners = this.listeners.filter(item => item !== listener);
-    }
+      this.listeners = this.listeners.filter((item) => item !== listener);
+    };
   }
 
   /**
@@ -39,38 +39,70 @@ class Store {
   }
 
   /**
-   * Добавление новой записи
+   * Нахождение товара из списка по коду
+   * @returns {Object}
    */
-  addItemToCart(good) { 
-    let found;
-    this.state.inCartList.forEach(element => {
-      if(element.good.code === good.code) {
-        found = element;        
-      }      
-    });
-    if(found) {
-      found.count+=1;
-    } else {
-      found = {good: good, count: 1}
-    }  
-
-    this.setState({
-      ...this.state,
-      inCartList: [...this.state.inCartList.filter(item => item.good.code !== found.good.code), found]
-    })
-  };
+  getGoodsItem(code) {
+    return this.state.list.find((item) => item.code === code);
+  }
 
   /**
-   * Удаление записи по коду
+   * Добавление товара в корзину
+   * * @param code
+   */
+  addGoods(code) {
+    const selectedGoods = this.state.goods.find((item) => item.code === code.code);
+    if (selectedGoods) {
+      this.setState({
+        ...this.state,
+        goods: this.state.goods.map((item) => {
+          if (item.code === code.code) {
+            return {
+              ...item,
+              count: item.count + 1,
+            };
+          }
+          return item;
+        }),
+      });
+    } else {
+      const itemGoods = this.getGoodsItem(code);
+      let item = {...code, count: 1}
+      this.setState({
+        ...this.state,
+        goods: [...this.state.goods, { ...itemGoods, ...item }],
+      });
+    }
+  }
+
+  /**
+   * Удаление товара из корзины
    * @param code
    */
-  deleteItemInCart(code) {
+  deleteGoods(code) {
     this.setState({
       ...this.state,
-      // Новый список, в котором не будет удаляемой записи
-      inCartList: this.state.inCartList.filter(item => item.good.code !== code)
-    })
-  };
+      goods: this.state.goods.filter((item) => item.code !== code.code),
+    });
+  }
+
+  /**
+   * Расчет итоговой суммы
+   * @returns {Number}
+   */
+  getTotalSum() {
+    return this.state.goods.reduce((acc, item) => {
+      return acc + item.count * item.price;
+    }, 0);
+  }
+
+  /**
+   * Расчет итогового количества
+   * @returns {Number}
+   */
+  getTotalCount() {
+    return this.state.goods.length;
+  }
 }
 
 export default Store;

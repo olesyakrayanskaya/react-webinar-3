@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from 'react';
+import CartList from './components/cart-list';
 import List from './components/list';
 import Controls from './components/controls';
 import Head from './components/head';
@@ -39,7 +40,7 @@ function App({ store }) {
     <PageLayout>
       <Modal modalIsOpen={modalIsOpen}>
         <Head title={"Корзина"} modalIsOpen={modalIsOpen} onCartOpen={callbacks.onCartOpen} />
-        <List list={goods} onClick={callbacks.onDeleteGoods} option={'cart'} />
+        <CartList list={goods} onClick={callbacks.onDeleteGoods} />
         <Footer modalIsOpen={modalIsOpen} totalSum={totalSum}/>
       </Modal>
       <Head title="Магазин" />

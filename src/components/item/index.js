@@ -9,33 +9,19 @@ function Item(props) {
       props.onClick(item);
     },
   };
-  const buttonValue = props.option === 'cart' ? 'Удалить' : 'Добавить';
 
   return (
     <div className="Item">
       <div className="Item-code">{props.item.code}</div>
       <div className="Item-title">{props.item.title}</div>
-      <div
-        className={
-          props.option === 'cart' ? 'Item-price Item-price--cart' : 'Item-price'
-        }
-      >
-        {props.item.price.toLocaleString() + ' ₽'}
-      </div>
-      {props.option === 'cart' && (
-        <div className="Item-count">
-          {props.item.count.toLocaleString() + ' шт'}
-        </div>
-      )}
+      <div className="Item-price">{props.item.price.toLocaleString() + ' ₽'}</div>
       <div className="Item-actions">
         <button
           className="Item-btn"
           onClick={() => {
             callbacks.onClick(props.item);
           }}
-        >
-          {buttonValue}
-        </button>
+        >Добавить</button>
       </div>
     </div>
   );

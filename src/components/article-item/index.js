@@ -11,9 +11,9 @@ function ArticleItem(props) {
   return (
     <div className="Article-item">
       <p className="Article-description">{props.article.description}</p>
-      <span className="Article-made">Страна производитель: {props.article.madeIn}</span>
-      <span className="Article-categori">Категория: {props.article.category}</span>
-      <span className="Article-edition">Год выпуска: {props.article.edition}</span>
+      <span className="Article-made">Страна производитель: <b>{props.article.madeIn}</b></span>
+      <span className="Article-categori">Категория: <b>{props.article.category}</b></span>
+      <span className="Article-edition">Год выпуска: <b>{props.article.edition}</b></span>
       <span className="Article-price">Цена: {numberFormat(props.article.price)} ₽</span>
       <button className="Article-btn" onClick={callbacks.onAdd}>
         Добавить

@@ -1,0 +1,22 @@
+.Article-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 40px;
+    gap: 20px;
+}
+
+.Article-description {
+    font-size: 18px;
+}
+
+.Article-price {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.Article-btn {
+    width: 76px;
+    height: 21px;
+}

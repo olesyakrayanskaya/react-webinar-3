@@ -18,8 +18,8 @@ function Article() {
 
   const select = useSelector((state) => ({
     description: state.article.description,
-    madeIn: state.article.madeIn.title,
-    category: state.article.category.title,
+    madeIn: state.article.madeIn,
+    category: state.article.category,
     edition: state.article.edition,
     price: state.article.price,
     title: state.article.title,

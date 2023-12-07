@@ -14,7 +14,7 @@ function Article() {
 
   useEffect(() => {
     store.actions.article.loadItem(id);
-  }, []);
+  }, [id]);
 
   const select = useSelector((state) => ({
     description: state.article.description,

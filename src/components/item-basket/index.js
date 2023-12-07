@@ -6,6 +6,7 @@ import PropTypes from "prop-types";
 import './style.css';
 import { Link } from 'react-router-dom';
 import useStore from "../../store/use-store";
+import { useNavigate } from "react-router-dom";
 
 function ItemBasket(props) {
 
@@ -22,6 +23,7 @@ function ItemBasket(props) {
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
       <div className={cn('title')}>
         <Link
+        relative='false'
           to={{
             pathname: `/${props.item._id}`,
           }}

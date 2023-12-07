@@ -6,19 +6,25 @@ import BasketTool from "../../components/basket-tool";
 import List from "../../components/list";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
+import Pagination from '../../components/pagination';
+import { getTotalPages } from '../../utils';
 
 function Main() {
 
   const store = useStore();
 
   useEffect(() => {
-    store.actions.catalog.load();
+    store.actions.catalog.loadWithPagination(select.limit, (select.pageId-1)*select.limit);
+    store.actions.catalog.loadTotalCount();
   }, []);
 
   const select = useSelector(state => ({
     list: state.catalog.list,
+    count: state.catalog.count,
+    limit: state.catalog.limit,
     amount: state.basket.amount,
-    sum: state.basket.sum
+    sum: state.basket.sum,
+    pageId: state.catalog.pageId,
   }));
 
   const callbacks = {
@@ -26,6 +32,11 @@ function Main() {
     addToBasket: useCallback(_id => store.actions.basket.addToBasket(_id), [store]),
     // Открытие модалки корзины
     openModalBasket: useCallback(() => store.actions.modals.open('basket'), [store]),
+
+    changePage: useCallback((p) => {
+      store.actions.catalog.setPageId(p);
+      store.actions.catalog.loadWithPagination(select.limit, select.limit*(p - 1));
+    }, [store]),
   }
 
   const renders = {
@@ -40,6 +51,7 @@ function Main() {
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
                   sum={select.sum}/>
       <List list={select.list} renderItem={renders.item}/>
+      <Pagination totalPages={getTotalPages(select.count, select.limit)} changePage={callbacks.changePage} activePage={select.pageId}/>
     </PageLayout>
 
   );

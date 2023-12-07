@@ -4,7 +4,7 @@ class Modals extends StoreModule {
 
   initState() {
     return {
-      name: null
+      name: null,
     }
   }
 

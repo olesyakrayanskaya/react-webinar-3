@@ -33,6 +33,11 @@ function Main() {
     // Открытие модалки корзины
     openModalBasket: useCallback(() => store.actions.modals.open('basket'), [store]),
 
+    openModalItem: useCallback((_id) => {
+      store.actions.catalog.setSelectedItemId(_id)
+      store.actions.modals.open('article')
+    }, [store]),
+
     changePage: useCallback((p) => {
       store.actions.catalog.setPageId(p);
       store.actions.catalog.loadWithPagination(select.limit, select.limit*(p - 1));
@@ -41,7 +46,7 @@ function Main() {
 
   const renders = {
     item: useCallback((item) => {
-      return <Item item={item} onAdd={callbacks.addToBasket}/>
+      return <Item item={item} onAdd={callbacks.addToBasket} onSelect={callbacks.openModalItem}/>
     }, [callbacks.addToBasket]),
   };
 

@@ -9,13 +9,14 @@ function Item(props) {
   const cn = bem('Item');
 
   const callbacks = {
-    onAdd: (e) => props.onAdd(props.item._id)
+    onAdd: (e) => props.onAdd(props.item._id),
+    onSelect: (e) => props.onSelect(props.item._id),
   }
 
   return (
     <div className={cn()}>
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
-      <div className={cn('title')}>
+      <div className={cn('title')} onClick={callbacks.onSelect}>
         {props.item.title}
       </div>
       <div className={cn('actions')}>

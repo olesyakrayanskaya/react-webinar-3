@@ -13,11 +13,17 @@ class Catalog extends StoreModule {
       count: 0,
       pageId: 1,
       limit: 10,
+      selectedItemId: null,
+      selectedItem: null,
     };
   }
 
   setPageId(p) {
     this.setState({ ...this.getState(), pageId: p });
+  }
+
+  setSelectedItemId(_id) {
+    this.setState({ ...this.getState(), selectedItemId: _id });
   }
 
   async load() {

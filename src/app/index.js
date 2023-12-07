@@ -3,6 +3,7 @@ import Main from "./main";
 import Basket from "./basket";
 import useStore from "../store/use-store";
 import useSelector from "../store/use-selector";
+import Article from './article';
 
 /**
  * Приложение
@@ -16,6 +17,7 @@ function App() {
     <>
       <Main/>
       {activeModal === 'basket' && <Basket/>}
+      {activeModal === 'article' && <Article/>}
     </>
   );
 }

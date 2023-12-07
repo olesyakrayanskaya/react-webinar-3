@@ -37,7 +37,7 @@ function Article() {
       <Head title={select.title}/>
       <BasketTool onOpen={callbacks.onOpen} amount={select.amount}
                   sum={select.sum}/>
-      <ArticleItem id={id} onAdd={callbacks.onAdd}/>
+      <ArticleItem id={id} onAdd={callbacks.onAdd} article={select}/>
     </PageLayout>
   );
 }

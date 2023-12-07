@@ -5,7 +5,7 @@ import './style.css';
 
 function ArticleItem(props) {
   const callbacks = {
-    onAdd: () => props.onAdd(props.item._id),
+    onAdd: () => props.onAdd(props.id),
   };
 
   return (
@@ -20,12 +20,8 @@ ArticleItem.propTypes = {
     _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     title: PropTypes.string,
     price: PropTypes.number,
-  }).isRequired,
+  }),
   onAdd: PropTypes.func,
-};
-
-ArticleItem.defaultProps = {
-  onAdd: () => {},
 };
 
 export default memo(ArticleItem);

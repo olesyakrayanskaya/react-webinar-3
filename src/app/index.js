@@ -3,6 +3,7 @@ import Main from "./main";
 import Basket from "./basket";
 import useStore from "../store/use-store";
 import useSelector from "../store/use-selector";
+import { Routes, Route, Link } from 'react-router-dom';
 import Article from './article';
 
 /**
@@ -15,9 +16,11 @@ function App() {
 
   return (
     <>
-      <Main/>
       {activeModal === 'basket' && <Basket/>}
-      {activeModal === 'article' && <Article/>}
+      <Routes>
+        <Route path='/' element={<Main />}/>
+        <Route path='/:id' element={<Article />}/>
+      </Routes>
     </>
   );
 }

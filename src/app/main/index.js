@@ -35,7 +35,7 @@ function Main() {
 
     openModalItem: useCallback((_id) => {
       store.actions.catalog.setSelectedItemId(_id)
-      store.actions.modals.open('article')
+      // store.actions.modals.open('article')
     }, [store]),
 
     changePage: useCallback((p) => {
@@ -58,7 +58,6 @@ function Main() {
       <List list={select.list} renderItem={renders.item}/>
       <Pagination totalPages={getTotalPages(select.count, select.limit)} changePage={callbacks.changePage} activePage={select.pageId}/>
     </PageLayout>
-
   );
 }
 

@@ -1,15 +1,16 @@
 import {memo, useCallback, useEffect} from 'react';
-import ModalLayout from "../../components/modal-layout";
+import PageLayout from '../../components/page-layout';
 import ArticleItem from '../../components/article-item';
 import Head from "../../components/head";
 import BasketTool from "../../components/basket-tool";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
+import { useParams } from "react-router-dom";
 
 function Article() {
 
+  let { id } = useParams();
   const store = useStore();
-  const id = store.state.catalog.selectedItemId;
 
   useEffect(() => {
     store.actions.article.loadItem(id);
@@ -28,18 +29,16 @@ function Article() {
 
   const callbacks = {
     onOpen: useCallback(() => store.actions.modals.open('basket'), [store]),
-    closeModal: useCallback(() => store.actions.modals.close(), [store]),
+    onAdd: useCallback(() => store.actions.basket.addToBasket(id), [store]),
   }
 
   return (
-    <ModalLayout title={select.title} onClose={callbacks.closeModal}>
-      <BasketTool
-        onOpen={callbacks.openModalBasket}
-        amount={select.amount}
-        sum={select.sum}
-      />
-      <ArticleItem />
-    </ModalLayout>
+    <PageLayout>
+      <Head title={select.title}/>
+      <BasketTool onOpen={callbacks.onOpen} amount={select.amount}
+                  sum={select.sum}/>
+      <ArticleItem id={id} onAdd={callbacks.onAdd}/>
+    </PageLayout>
   );
 }
 

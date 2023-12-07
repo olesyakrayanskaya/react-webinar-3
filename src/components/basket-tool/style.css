@@ -6,8 +6,12 @@
   font-size: 18px;
 }
 
-.BasketTool-label {
-
+.BasketTool-link {
+  margin-right: auto;
+  color: #0087E9;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .BasketTool-total {

@@ -10,15 +10,13 @@ import useStore from "../../store/use-store";
 function ItemBasket(props) {
 
   const cn = bem('ItemBasket');
-  const store = useStore();
 
   const callbacks = {
     onRemove: (e) => props.onRemove(props.item._id),
-    closeModal: useCallback(() => store.actions.modals.close(), [store]),
   };
 
   return (
-    <div className={cn()} onClick={callbacks.closeModal}>
+    <div className={cn()}>
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
       <div className={cn('title')}>
         <Link

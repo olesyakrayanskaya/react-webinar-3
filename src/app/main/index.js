@@ -1,4 +1,4 @@
-import {memo, useCallback, useEffect} from 'react';
+import {memo, useCallback, useEffect, useState} from 'react';
 import Item from "../../components/item";
 import PageLayout from "../../components/page-layout";
 import Head from "../../components/head";
@@ -13,9 +13,17 @@ function Main() {
 
   const store = useStore();
 
+  const [language, setLanguage] = useState('русский');
+
+  const changeLanguage = (e) => {
+    setLanguage(e.target.value);
+    store.actions.languages.setDictionary(e.target.value);
+  };
+
   useEffect(() => {
     store.actions.catalog.loadWithPagination(select.limit, (select.pageId-1)*select.limit);
     store.actions.catalog.loadTotalCount();
+    store.actions.languages.setDictionary(language);
   }, []);
 
   const select = useSelector(state => ({
@@ -25,6 +33,7 @@ function Main() {
     amount: state.basket.amount,
     sum: state.basket.sum,
     pageId: state.catalog.pageId,
+    dictionary: state.languages.dictionary,
   }));
 
   const callbacks = {
@@ -52,9 +61,9 @@ function Main() {
 
   return (
     <PageLayout>
-      <Head title='Магазин'/>
+      <Head title={select.dictionary.store} language={language} changeLanguage={changeLanguage} dictionary={select.dictionary}/>
       <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
-                  sum={select.sum}/>
+                  sum={select.sum} dictionary={select.dictionary}/>
       <List list={select.list} renderItem={renders.item}/>
       <Pagination totalPages={getTotalPages(select.count, select.limit)} changePage={callbacks.changePage} activePage={select.pageId}/>
     </PageLayout>

@@ -1,0 +1,20 @@
+.SelectLang {
+    margin: 25px 20px 0 0;
+}
+
+.SelectLang-select {
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #EFEFEF;
+    border-radius: 2px;
+}
+
+.SelectLang-select:focus,
+.SelectLang-select:active {
+    outline: none;
+}
+
+.SelectLang-label {
+    display: inline-block;
+    width: 120px;
+}

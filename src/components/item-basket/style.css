@@ -3,7 +3,12 @@
   display: flex;
   justify-content: flex-start;
   transition: background-color 1s;
-  padding-left: 10px
+  padding-left: 10px;
+  align-items: center;
+}
+
+.ItemBasket button {
+  cursor: pointer;
 }
 
 .ItemBasket-code {

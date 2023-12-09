@@ -5,6 +5,10 @@
   padding-left: 10px
 }
 
+.Item button {
+  cursor: pointer;
+}
+
 .Item a {
   cursor: pointer;
   color: inherit;

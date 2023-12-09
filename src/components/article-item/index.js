@@ -1,4 +1,4 @@
-import {memo, useState} from "react";
+import {memo} from "react";
 import PropTypes from "prop-types";
 import {numberFormat} from "../../utils";
 import './style.css';
@@ -23,12 +23,9 @@ function ArticleItem(props) {
 }
 
 ArticleItem.propTypes = {
-  item: PropTypes.shape({
-    _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    title: PropTypes.string,
-    price: PropTypes.number,
-  }),
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onAdd: PropTypes.func,
+  article: PropTypes.object,
 };
 
 export default memo(ArticleItem);

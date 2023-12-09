@@ -2,26 +2,26 @@ import {memo} from "react";
 import PropTypes from 'prop-types';
 import {cn as bem} from '@bem-react/classname';
 import {numberFormat, plural} from "../../utils";
-import Nav from "../nav";
 import './style.css';
+import { Link } from 'react-router-dom';
 
-function BasketTool({sum, amount, onOpen, dictionary}) {
+function BasketTool({sum, amount, onOpen}) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
-      <Nav dictionary={dictionary}/>
-      <span className={cn('label')}>{dictionary.inCart}:</span>
+      <span className={cn('link')}><Link to='/'>Главная</Link></span>
+      <span className={cn('label')}>В корзине:</span>
       <span className={cn('total')}>
         {amount
           ? `${amount} ${plural(amount, {
-            one: `${dictionary.product}`,
-            few: `${dictionary.products}`,
-            many: `${dictionary.productsMany}`
+            one: 'товар',
+            few: 'товара',
+            many: 'товаров'
           })} / ${numberFormat(sum)} ₽`
-          : `${dictionary.empty}`
+          : `пусто`
         }
       </span>
-      <button onClick={onOpen}>{dictionary.toCart}</button>
+      <button onClick={onOpen}>Перейти</button>
     </div>
   );
 }
@@ -29,8 +29,7 @@ function BasketTool({sum, amount, onOpen, dictionary}) {
 BasketTool.propTypes = {
   onOpen: PropTypes.func.isRequired,
   sum: PropTypes.number,
-  amount: PropTypes.number,
-  dictionary: PropTypes.object,
+  amount: PropTypes.number
 };
 
 BasketTool.defaultProps = {

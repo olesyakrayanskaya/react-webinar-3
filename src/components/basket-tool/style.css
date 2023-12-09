@@ -7,6 +7,19 @@
   font-size: 18px;
 }
 
+.BasketTool-link {
+  margin-right: auto;
+  color: #0087E9;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.BasketTool-link a:active,
+.BasketTool-link a:visited {
+  color: #0087E9;
+}
+
 .BasketTool-total {
   font-weight: bold;
   margin: 0 20px;

@@ -5,7 +5,7 @@ import {cn as bem} from "@bem-react/classname";
 import PropTypes from "prop-types";
 import './style.css';
 import { Link } from 'react-router-dom';
-import useStore from "../../store/use-store";
+import {getArticleUrl} from '../../utils';
 
 function ItemBasket(props) {
 
@@ -23,7 +23,7 @@ function ItemBasket(props) {
         <Link
         relative='false'
           to={{
-            pathname: `/article/${props.item._id}`,
+            pathname: getArticleUrl(props.item._id),
           }}
         >
           {props.item.title}

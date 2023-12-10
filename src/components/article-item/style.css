@@ -3,12 +3,19 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 40px;
-    gap: 20px;
+    padding: 0 40px;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
 }
 
-.Article-description {
-    font-size: 18px;
+.Article-edition {
+    margin-bottom: 18px;
+}
+
+.Article-made,
+.Article-categori,
+.Article-price {
+    margin-bottom: 20px;
 }
 
 .Article-price {

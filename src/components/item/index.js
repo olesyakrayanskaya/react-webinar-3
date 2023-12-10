@@ -4,6 +4,7 @@ import {cn as bem} from '@bem-react/classname';
 import {numberFormat} from "../../utils";
 import './style.css';
 import { Link } from 'react-router-dom';
+import {getArticleUrl} from '../../utils';
 
 function Item(props) {
 
@@ -20,7 +21,7 @@ function Item(props) {
       <div className={cn('title')}>
         <Link
           to={{
-            pathname: `/article/${props.item._id}`,
+            pathname: getArticleUrl(props.item._id),
           }}
         >
           {props.item.title}

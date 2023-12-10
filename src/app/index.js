@@ -1,9 +1,7 @@
-import {useCallback, useContext, useEffect, useState} from 'react';
 import Main from "./main";
 import Basket from "./basket";
-import useStore from "../store/use-store";
 import useSelector from "../store/use-selector";
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Article from './article';
 
 /**
@@ -19,7 +17,7 @@ function App() {
       {activeModal === 'basket' && <Basket/>}
       <Routes>
         <Route path='/' element={<Main />}/>
-        <Route path='/:id' element={<Article />}/>
+        <Route path='/article/:id' element={<Article />}/>
       </Routes>
     </>
   );

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import './style.css';
-import { memo } from 'react';
 
 function Pagination({totalPages, changePage, activePage}) {
 
@@ -99,4 +98,4 @@ Pagination.defaultProps = {
   changePage: (p) => {},
 }
 
-export default memo(Pagination);
+export default Pagination;

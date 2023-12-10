@@ -20,7 +20,7 @@ function Item(props) {
       <div className={cn('title')}>
         <Link
           to={{
-            pathname: `/${props.item._id}`,
+            pathname: `/article/${props.item._id}`,
           }}
         >
           {props.item.title}

@@ -13,16 +13,17 @@ function ItemBasket(props) {
 
   const callbacks = {
     onRemove: (e) => props.onRemove(props.item._id),
+    onClose: () => props.onClose(),
   };
 
   return (
     <div className={cn()}>
       {/*<div className={cn('code')}>{props.item._id}</div>*/}
-      <div className={cn('title')}>
+      <div className={cn('title')} onClick={callbacks.onClose}>
         <Link
         relative='false'
           to={{
-            pathname: `/${props.item._id}`,
+            pathname: `/article/${props.item._id}`,
           }}
         >
           {props.item.title}

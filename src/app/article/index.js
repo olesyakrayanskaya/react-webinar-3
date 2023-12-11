@@ -19,14 +19,9 @@ function Article() {
   }, [id]);
 
   const select = useSelector((state) => ({
-    description: state.article.description,
-    madeIn: state.article.madeIn,
-    category: state.article.category,
-    edition: state.article.edition,
-    price: state.article.price,
-    title: state.article.title,
     amount: state.basket.amount,
     sum: state.basket.sum,
+    article: state.article
   }));
 
   const callbacks = {
@@ -36,13 +31,13 @@ function Article() {
 
   return (
     <PageLayout>
-      <Head title={select.title}/>
+      <Head title={select.article.title}/>
       <Wrapper>
         <Nav />
         <BasketTool onOpen={callbacks.onOpen} amount={select.amount}
                   sum={select.sum} className={'BasketTool-btn BasketTool-btn--in-article'}/>
       </Wrapper>
-      <ArticleItem id={id} onAdd={callbacks.onAdd} article={select}/>
+      <ArticleItem id={id} onAdd={callbacks.onAdd} article={select.article}/>
     </PageLayout>
   );
 }

@@ -39,7 +39,7 @@ function Article() {
       <Head title={select.title}/>
       <Wrapper>
         <Nav />
-        <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
+        <BasketTool onOpen={callbacks.onOpen} amount={select.amount}
                   sum={select.sum}/>
       </Wrapper>
       <ArticleItem id={id} onAdd={callbacks.onAdd} article={select}/>

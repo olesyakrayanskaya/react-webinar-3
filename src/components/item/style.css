@@ -1,12 +1,21 @@
 .Item {
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   transition: background-color 1s;
-  padding-left: 10px
+  padding-left: 10px;
+  color: #000;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .Item button {
   cursor: pointer;
+  width: 75px;
+  height: 21px;
 }
 
 .Item a {

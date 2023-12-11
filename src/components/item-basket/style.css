@@ -5,10 +5,18 @@
   transition: background-color 1s;
   padding-left: 10px;
   align-items: center;
+  color: #000;
+  font-family: Arial;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .ItemBasket button {
   cursor: pointer;
+  width: 67px;
+  height: 19px;
 }
 
 .ItemBasket-code {

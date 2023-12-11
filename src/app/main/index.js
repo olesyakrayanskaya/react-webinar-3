@@ -58,7 +58,7 @@ function Main() {
       <Wrapper>
         <Nav />
         <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
-                  sum={select.sum}/>
+                  sum={select.sum} className={'BasketTool-btn'}/>
       </Wrapper>
       <List list={select.list} renderItem={renders.item}/>
       <Pagination totalPages={getTotalPages(select.count, select.limit)} changePage={callbacks.changePage} activePage={select.pageId}/>

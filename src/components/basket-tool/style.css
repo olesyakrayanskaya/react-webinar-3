@@ -7,13 +7,17 @@
   font-size: 18px;
 }
 
-.BasketTool button {
+.BasketTool-btn {
   cursor: pointer;
-  width: 80px;
+  width: 69px;
   height: 21px;
   border-radius: 2px;
   border: 1px solid #767676;
   background: #EFEFEF;
+}
+
+.BasketTool-btn--in-article {
+  width: 80px;
 }
 
 .BasketTool-total {

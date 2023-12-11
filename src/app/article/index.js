@@ -40,7 +40,7 @@ function Article() {
       <Wrapper>
         <Nav />
         <BasketTool onOpen={callbacks.onOpen} amount={select.amount}
-                  sum={select.sum}/>
+                  sum={select.sum} className={'BasketTool-btn BasketTool-btn--in-article'}/>
       </Wrapper>
       <ArticleItem id={id} onAdd={callbacks.onAdd} article={select}/>
     </PageLayout>

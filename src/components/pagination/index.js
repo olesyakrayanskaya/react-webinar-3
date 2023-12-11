@@ -17,31 +17,25 @@ function Pagination({totalPages, changePage, activePage}) {
 
     function addButton(i) {
       let b;
+      let className = 'Pagination-btn';
+
       if (activePage === i + 1) {
-        b = (
-          <button
-            className="Pagination-btn Pagination-btn--active"
-            key={i}
-            onClick={() => {
-              changePage(i + 1);
-            }}
-          >
-            {i + 1}
-          </button>
-        );
+        className = 'Pagination-btn Pagination-btn--active';
       } else {
-        b = (
-          <button
-            className="Pagination-btn"
-            key={i}
-            onClick={() => {
-              changePage(i + 1);
-            }}
-          >
-            {i + 1}
-          </button>
-        );
+        className = 'Pagination-btn';
       }
+
+      b = (
+        <button
+          className={className}
+          key={i}
+          onClick={() => {
+            changePage(i + 1);
+          }}
+        >
+          {i + 1}
+        </button>
+      );
 
       result.push(b);
     }

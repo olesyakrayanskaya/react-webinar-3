@@ -1,5 +1,4 @@
 import {memo} from "react";
-import PropTypes from "prop-types";
 import './style.css';
 import { Link } from 'react-router-dom';
 
@@ -10,9 +9,5 @@ function Nav() {
     </nav>
   )
 }
-
-Nav.propTypes = {
-  title: PropTypes.node,
-};
 
 export default memo(Nav);

@@ -2,6 +2,8 @@ import {memo, useCallback, useEffect} from 'react';
 import PageLayout from '../../components/page-layout';
 import ArticleItem from '../../components/article-item';
 import Head from "../../components/head";
+import Wrapper from '../../components/wrapper';
+import Nav from '../../components/nav';
 import BasketTool from "../../components/basket-tool";
 import useStore from "../../store/use-store";
 import useSelector from "../../store/use-selector";
@@ -35,8 +37,11 @@ function Article() {
   return (
     <PageLayout>
       <Head title={select.title}/>
-      <BasketTool onOpen={callbacks.onOpen} amount={select.amount}
+      <Wrapper>
+        <Nav />
+        <BasketTool onOpen={callbacks.openModalBasket} amount={select.amount}
                   sum={select.sum}/>
+      </Wrapper>
       <ArticleItem id={id} onAdd={callbacks.onAdd} article={select}/>
     </PageLayout>
   );

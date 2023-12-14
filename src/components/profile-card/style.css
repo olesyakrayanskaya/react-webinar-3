@@ -1,0 +1,17 @@
+.ProfileCard {
+    padding-left: 20px;
+}
+
+.ProfileCard p {
+    margin-bottom: 20px;
+    color: #000;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.ProfileCard span {
+    font-weight: 700;
+}

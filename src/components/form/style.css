@@ -1,0 +1,37 @@
+.Form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    padding-top: 5px;
+    padding-left: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: #000;
+}
+
+.Form-input {
+    margin-bottom: 24px;
+    width: 198px;
+    height: 17px;
+}
+
+.Form-input:nth-of-type(1) {
+    margin-bottom: 25px;
+}
+
+.Form-msg {
+    margin: 0;
+    margin-bottom: 19px;
+    color: #F00;
+}
+
+.Form-input[type=submit] {
+    width: 53px;
+    height: 21px;
+    cursor: pointer;
+    font-size: 13px;
+}

@@ -1,0 +1,35 @@
+.Header {
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.Header-btn {
+    color: #000;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px 3px;
+}
+
+.Header-link {
+    color: #0087E9;
+    text-decoration-line: underline;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+.Header-link--btn {
+    text-decoration: none;
+    color: inherit;
+    margin-right: 0px;
+}
+
+.Header-link--btn:active,
+.Header-link--btn :visited {
+    color: inherit;
+}

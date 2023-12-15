@@ -3,7 +3,7 @@
 }
 
 .ProfileCard p {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     color: #000;
     font-family: Arial, sans-serif;
     font-size: 18px;
@@ -14,4 +14,16 @@
 
 .ProfileCard span {
     font-weight: 700;
+}
+
+.ProfileCard-name {
+    margin-top: 30px;
+}
+
+.ProfileCard-tel {
+    margin-top: -5px;
+}
+
+.ProfileCard-email {
+    margin-top: -11px;
 }

@@ -20,13 +20,13 @@ function Profile() {
   const store = useStore();
   const navigate = useNavigate();
 
-  const select = useSelector((store) => ({
-    username: store.profile.username,
-    phone: store.profile.phone,
-    email: store.profile.email,
-    token: store.profile.token,
-    waiting: store.profile.waiting,
-    userProfile: store.profile.userProfile,
+  const select = useSelector((state) => ({
+    username: state.profile.username,
+    phone: state.profile.phone,
+    email: state.profile.email,
+    token: state.profile.token,
+    waiting: state.profile.waiting,
+    userProfile: state.profile.userProfile,
   }));
 
   useInit(() => {

@@ -31,7 +31,7 @@ function Login() {
       navigate('/profile');
     }
   }
-  }, [store]);
+  }, []);
 
   const callbacks = {
     onLogin: (body) => {

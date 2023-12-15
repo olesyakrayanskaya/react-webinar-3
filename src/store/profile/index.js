@@ -13,7 +13,7 @@ class ProfileState extends StoreModule {
   }
 
   async login(body) {
-    this.setState({ ...this.getState(), waiting: true, error: null });
+    this.setState({ ...this.getState(), waiting: true });
     const response = await fetch('/api/v1/users/sign', {
       method: 'POST',
       headers: {
@@ -26,7 +26,6 @@ class ProfileState extends StoreModule {
       this.setState({
         ...this.getState(),
         token: json.result.token,
-        username: json.result.user.profile.name,
         waiting: false,
       });
       localStorage.setItem('token', json.result.token);
@@ -40,10 +39,18 @@ class ProfileState extends StoreModule {
   }
 
   async logout() {
-    this.setState({ ...this.getState(), waiting: true, error: null });
+    this.setState({ ...this.getState(), waiting: true });
     const token = this.getState().token;
     localStorage.removeItem('token');
-
+    if (token) {
+      await fetch('/api/v1/users/sign', {
+        method: 'DELETE',
+        headers: {
+          'X-Token': token,
+          'Content-Type': 'application/json',
+        },
+      });
+    }
     this.setState({ ...this.initState() });
   }
 
@@ -56,7 +63,7 @@ class ProfileState extends StoreModule {
   }
 
   async loadProfile() {
-    this.setState({ ...this.getState(), waiting: true, error: null });
+    this.setState({ ...this.getState(), waiting: true});
     const token = localStorage.getItem('token');
     if (token) {
       const response = await fetch(

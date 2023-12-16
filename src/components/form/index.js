@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 
-function Form({ t, onLogin, error }) {
+function Form({ t, onLogin, error, isLogged }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -21,7 +21,7 @@ function Form({ t, onLogin, error }) {
     handleSubmitForm: (e) => {
       e.preventDefault();
       onLogin(user);
-      navigate('/profile');
+      if(isLogged()) {navigate('/profile')};
     },
   };
 

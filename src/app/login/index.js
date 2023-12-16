@@ -31,7 +31,7 @@ function Login() {
       navigate('/profile');
     }
   }
-  }, []);
+  }, [select.waiting]);
 
   const callbacks = {
     onLogin: (body) => {
@@ -53,7 +53,7 @@ function Login() {
       </Head>
       <Navigation />
       <Title title={t('in')} />
-      <Form t={t} onLogin={callbacks.onLogin} error={select.error} />
+      <Form t={t} onLogin={callbacks.onLogin} error={select.error} isLogged={callbacks.isLogged}/>
     </PageLayout>
   );
 }

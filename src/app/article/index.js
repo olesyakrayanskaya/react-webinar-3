@@ -61,7 +61,12 @@ function Article() {
           onSetDisplayError={onSetDisplayError}
         />
       ) : (
-        <Header link="/login" btnText={t('in')} onLogOut={callbacks.onLogOut} onSetDisplayError={callbacks.onSetDisplayError} />
+        <Header
+          link="/login"
+          btnText={t('in')}
+          onLogOut={callbacks.onLogOut}
+          onSetDisplayError={callbacks.onSetDisplayError}
+        />
       )}
       <Head title={select.article.title}>
         <LocaleSelect />

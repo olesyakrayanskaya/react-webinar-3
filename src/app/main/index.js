@@ -50,7 +50,12 @@ function Main() {
           onSetDisplayError={callbacks.onSetDisplayError}
         />
       ) : (
-        <Header link="/login" btnText={t('in')} onLogOut={callbacks.onLogOut} onSetDisplayError={callbacks.onSetDisplayError}/>
+        <Header
+          link="/login"
+          btnText={t('in')}
+          onLogOut={callbacks.onLogOut}
+          onSetDisplayError={callbacks.onSetDisplayError}
+        />
       )}
       <Head title={t('title')}>
         <LocaleSelect />

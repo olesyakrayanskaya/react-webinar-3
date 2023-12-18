@@ -18,7 +18,7 @@ class CatalogState extends StoreModule {
         query: '',
         category: '',
       },
-      categories: [],
+      // categories: [],
       count: 0,
       waiting: false,
     };
@@ -104,57 +104,57 @@ class CatalogState extends StoreModule {
       `/api/v1/articles?${new URLSearchParams(apiParams)}`
     );
     const json = await response.json();
-    const categories = await this.getCategories();
+    // const categories = await this.getCategories();
     this.setState(
       {
         ...this.getState(),
         list: json.result.items,
         count: json.result.count,
-        categories: categories,
+        // categories: categories,
         waiting: false,
       },
       'Загружен список товаров из АПИ'
     );
   }
 
-  async getCategories() {
+  // async getCategories() {
 
-    let result = [{value: '', title: 'Все'}];
+  //   let result = [{value: '', title: 'Все'}];
 
-    const response = await fetch(
-      `/api/v1/categories?fields=_id,title,parent(_id)&limit=*`
-    );
-    const json = await response.json();
+  //   const response = await fetch(
+  //     `/api/v1/categories?fields=_id,title,parent(_id)&limit=*`
+  //   );
+  //   const json = await response.json();
 
-    const children = {};
+  //   const children = {};
 
-    json.result.items.forEach(item => {
-      const key = item.parent == null ? null : item.parent._id
-      let found = children[key];
-      if (!found) {
-        found = []
-        children[key] = found;
-      }
-      found.push(item)     
-    });
+  //   json.result.items.forEach(item => {
+  //     const key = item.parent == null ? null : item.parent._id
+  //     let found = children[key];
+  //     if (!found) {
+  //       found = []
+  //       children[key] = found;
+  //     }
+  //     found.push(item)     
+  //   });
     
-    let stack = children[null].slice().reverse();
+  //   let stack = children[null].slice().reverse();
 
-    while (stack.length > 0) {
-      let c = stack.pop();
-      let depth = c.depth ? c.depth: 0;
-      let newCh = children[c._id];
-      if (newCh) {
-        newCh.slice().reverse().forEach(n => {
-          n.depth = depth + 1;
-          stack.push(n);
-        })
-      }
-      result.push({value: c._id, title: '- '.repeat(depth) + c.title})
-    }
+  //   while (stack.length > 0) {
+  //     let c = stack.pop();
+  //     let depth = c.depth ? c.depth: 0;
+  //     let newCh = children[c._id];
+  //     if (newCh) {
+  //       newCh.slice().reverse().forEach(n => {
+  //         n.depth = depth + 1;
+  //         stack.push(n);
+  //       })
+  //     }
+  //     result.push({value: c._id, title: '- '.repeat(depth) + c.title})
+  //   }
 
-    return result;
-  }
+  //   return result;
+  // }
 }
 
 export default CatalogState;

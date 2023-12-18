@@ -20,6 +20,7 @@ function Main() {
 
   useInit(() => {
     store.actions.catalog.initParams();
+    store.actions.categories.loadCategories();
   }, [], true);
 
   const {t} = useTranslate();
@@ -32,6 +33,9 @@ function Main() {
     onLogOut: useCallback(() => {
       store.actions.login.logout();
     }, [store]),
+    onSetDisplayError: useCallback(() => {
+      store.actions.login.setDisplayError();
+    })
   };
 
   return (
@@ -43,9 +47,10 @@ function Main() {
           userLink={'/profile'}
           userName={select.username}
           onLogOut={callbacks.onLogOut}
+          onSetDisplayError={callbacks.onSetDisplayError}
         />
       ) : (
-        <Header link="/login" btnText={t('in')} />
+        <Header link="/login" btnText={t('in')} onLogOut={callbacks.onLogOut} onSetDisplayError={callbacks.onSetDisplayError}/>
       )}
       <Head title={t('title')}>
         <LocaleSelect />

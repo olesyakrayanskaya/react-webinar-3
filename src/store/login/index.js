@@ -8,7 +8,15 @@ class LoginState extends StoreModule {
       error: null,
       session: false,
       username: null,
+      displayError: true,
     };
+  }
+
+  setDisplayError(displayError) {
+    this.setState({
+      ...this.getState(),
+      displayError: displayError,
+    });
   }
 
   async login(body) {

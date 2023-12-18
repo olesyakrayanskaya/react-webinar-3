@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
 
-function Form({ t, onLogin, error, session }) {
+function Form({ t, onLogin, error, session, displayError, onSetDisplayError }) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({
@@ -21,6 +21,7 @@ function Form({ t, onLogin, error, session }) {
     handleSubmitForm: (e) => {
       e.preventDefault();
       onLogin(user);
+      onSetDisplayError(true);
       if(session) {navigate('/profile')};
     },
   };
@@ -49,7 +50,7 @@ function Form({ t, onLogin, error, session }) {
         value={user.password}
         onChange={callbacks.onChange}
       ></input>
-      {error ? <p className="Form-msg">{error}</p> : ''}
+      {error && displayError ? <p className="Form-msg">{error}</p> : ''}
       <input
         className="Form-input"
         type="submit"

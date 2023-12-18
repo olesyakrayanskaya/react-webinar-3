@@ -10,6 +10,7 @@ import Form from "../../components/form";
 import Navigation from "../../containers/navigation";
 import LocaleSelect from "../../containers/locale-select";
 import useInit from '../../hooks/use-init';
+import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 
 function Login() {
@@ -17,19 +18,21 @@ function Login() {
 
   const store = useStore();
   const navigate = useNavigate();
+  const params = useParams();
 
   const select = useSelector((state) => ({
     error: state.login.error,
     waiting: state.login.waiting,
     session: state.login.session,
+    displayError: state.login.displayError,
   }));
 
   useInit(() => {
     if (!select.waiting) {
-    if (select.session) {
-      navigate('/profile');
+      if (select.session) {
+        navigate('/profile');
+      }
     }
-  }
   }, [select.waiting]);
 
   const callbacks = {
@@ -39,17 +42,32 @@ function Login() {
     onLogout: () => {
       store.actions.login.logout();
     },
+    onSetDisplayError: (displayError) => {
+      store.actions.login.setDisplayError(displayError);
+    },
   };
 
   return (
     <PageLayout>
-      <Header link='/login' btnText={t('in')} onLogOut={() => {}} />
+      <Header
+        link="/login"
+        btnText={t('in')}
+        onLogOut={() => {}}
+        onSetDisplayError={() => callbacks.onSetDisplayError(false)}
+      />
       <Head title={t('title')}>
         <LocaleSelect />
       </Head>
       <Navigation />
       <Title title={t('in')} />
-      <Form t={t} onLogin={callbacks.onLogin} error={select.error} session={select.session}/>
+      <Form
+        t={t}
+        onLogin={callbacks.onLogin}
+        error={select.error}
+        session={select.session}
+        onSetDisplayError={() => callbacks.onSetDisplayError(true)}
+        displayError={select.displayError}
+      />
     </PageLayout>
   );
 }

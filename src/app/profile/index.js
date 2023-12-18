@@ -31,6 +31,9 @@ function Profile() {
     onLogOut: useCallback(() => {
       store.actions.login.logout();
     }, [store]),
+    onSetDisplayError: () => {
+      store.actions.login.setDisplayError();
+    }
   };
 
   return (
@@ -41,6 +44,7 @@ function Profile() {
         userLink={'/profile'}
         userName={select.user?.profile.name}
         onLogOut={callbacks.onLogOut}
+        onSetDisplayError={callbacks.onSetDisplayError}
       />
       <Head title={t('title')}>
         <LocaleSelect />

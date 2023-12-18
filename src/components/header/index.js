@@ -4,13 +4,24 @@ import './style.css';
 import SideLayout from "../side-layout";
 import { Link } from "react-router-dom";
 
-function Header({ link, btnText, userLink, userName, onLogOut}) {
+function Header({ link, btnText, userLink, userName, onLogOut, onSetDisplayError}) {
   return (
     <header className="Header">
       <SideLayout side="end">
-        <Link className="Header-link" to={userLink}>{userName}</Link>
+        <Link className="Header-link" to={userLink}>
+          {userName}
+        </Link>
         <button className="Header-btn">
-          <Link className="Header-link Header-link--btn" to={link} onClick={onLogOut}>{btnText}</Link>
+          <Link
+            className="Header-link Header-link--btn"
+            to={link}
+            onClick={() => {
+              onLogOut(); 
+              onSetDisplayError(false);
+            }}
+          >
+            {btnText}
+          </Link>
         </button>
       </SideLayout>
     </header>
@@ -23,6 +34,7 @@ Header.propTypes = {
     userLink: PropTypes.string,
     userName: PropTypes.string,
     onLogOut: PropTypes.func,
+    onSetDisplayError: PropTypes.func,
 };
 
 export default memo(Header);

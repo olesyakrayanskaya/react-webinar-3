@@ -44,6 +44,9 @@ function Article() {
     onLogOut: useCallback(() => {
       store.actions.login.logout();
     }, [store]),
+    onSetDisplayError: useCallback((displayError) => {
+      store.actions.login.setDisplayError(displayError);
+    }, [store]),
   };
 
   return (
@@ -55,9 +58,10 @@ function Article() {
           userName={select.username}
           userLink={'/profile'}
           onLogOut={callbacks.onLogOut}
+          onSetDisplayError={onSetDisplayError}
         />
       ) : (
-        <Header link="/login" btnText={t('in')} />
+        <Header link="/login" btnText={t('in')} onLogOut={callbacks.onLogOut} onSetDisplayError={callbacks.onSetDisplayError} />
       )}
       <Head title={select.article.title}>
         <LocaleSelect />

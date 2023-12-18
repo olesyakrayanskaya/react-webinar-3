@@ -23,13 +23,14 @@ function Article() {
 
   useInit(() => {
     store.actions.article.load(params.id);
-    store.actions.profile.loadProfile();
+    // store.actions.login.login(body);
   }, [params.id]);
 
   const select = useSelector(state => ({
     article: state.article.data,
     waiting: state.article.waiting,
-    username: state.profile.username,
+    session: state.login.session,
+    username: state.login.username,
   }));  
 
   const {t} = useTranslate();
@@ -41,18 +42,18 @@ function Article() {
       [store]
     ),
     onLogOut: useCallback(() => {
-      store.actions.profile.logout();
+      store.actions.login.logout();
     }, [store]),
   };
 
   return (
     <PageLayout>
-      {store.actions.profile.isLogged() ? (
+      {select.session ? (
         <Header
           link="/login"
           btnText={t('out')}
-          userLink={'/profile'}
           userName={select.username}
+          userLink={'/profile'}
           onLogOut={callbacks.onLogOut}
         />
       ) : (

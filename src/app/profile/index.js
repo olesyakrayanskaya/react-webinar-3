@@ -10,7 +10,6 @@ import Navigation from "../../containers/navigation";
 import Spinner from "../../components/spinner";
 import LocaleSelect from "../../containers/locale-select";
 import ProfileCard from '../../components/profile-card';
-import { useNavigate } from "react-router-dom";
 import useInit from '../../hooks/use-init';
 
 function Profile() {
@@ -18,41 +17,29 @@ function Profile() {
   const { t } = useTranslate();
 
   const store = useStore();
-  const navigate = useNavigate();
-
-  const select = useSelector((state) => ({
-    username: state.profile.username,
-    phone: state.profile.phone,
-    email: state.profile.email,
-    token: state.profile.token,
-    waiting: state.profile.waiting,
-    userProfile: state.profile.userProfile,
-  }));
 
   useInit(() => {
-    if (!select.waiting) {
-      if (!store.actions.profile.isLogged()) {
-        navigate('/login');
-      }
-      if (!select.userProfile) {
-        store.actions.profile.loadProfile();
-      }
-    }
-  }, [select.waiting]);
+    store.actions.profile.loadProfile();
+  }, []);
+
+  const select = useSelector((state) => ({
+    user: state.profile.data,
+    waiting: state.profile.waiting,
+  }));
 
   const callbacks = {
     onLogOut: useCallback(() => {
-      store.actions.profile.logout();
+      store.actions.login.logout();
     }, [store]),
   };
 
   return (
     <PageLayout>
       <Header
-        link='/login'
+        link="/login"
         btnText={t('out')}
         userLink={'/profile'}
-        userName={select.username}
+        userName={select.user?.profile.name}
         onLogOut={callbacks.onLogOut}
       />
       <Head title={t('title')}>
@@ -61,12 +48,7 @@ function Profile() {
       <Navigation />
       <Title title={t('profile')} />
       <Spinner active={select.waiting}>
-        <ProfileCard
-          username={select.username}
-          phone={select.phone}
-          email={select.email}
-          t={t}
-        />
+        <ProfileCard user={select.user} t={t} />
       </Spinner>
     </PageLayout>
   );

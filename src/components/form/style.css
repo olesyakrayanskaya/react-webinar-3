@@ -14,9 +14,16 @@
 }
 
 .Form-input {
-    margin-bottom: 24px;
-    width: 198px;
-    height: 17px;
+    width: 195px;
+    height: 21px;
+}
+
+.Form-input[name=login] {
+    margin-bottom: 15px;
+}
+
+.Form-input[name=password] {
+    margin-bottom: 20px;
 }
 
 .Form-msg {

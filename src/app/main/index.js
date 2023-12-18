@@ -20,24 +20,23 @@ function Main() {
 
   useInit(() => {
     store.actions.catalog.initParams();
-    store.actions.profile.loadProfile();
   }, [], true);
 
   const {t} = useTranslate();
-
   const select = useSelector((state) => ({
-    username: state.profile.username,
+    username: state.login.username,
+    session: state.login.session,
   }));
 
   const callbacks = {
     onLogOut: useCallback(() => {
-      store.actions.profile.logout();
+      store.actions.login.logout();
     }, [store]),
   };
 
   return (
     <PageLayout>
-      {store.actions.profile.isLogged() ? (
+      {select.session ? (
         <Header
           link="/login"
           btnText={t('out')}

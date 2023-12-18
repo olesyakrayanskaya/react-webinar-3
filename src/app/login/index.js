@@ -19,15 +19,14 @@ function Login() {
   const navigate = useNavigate();
 
   const select = useSelector((state) => ({
-    username: state.profile.username,
-    token: state.profile.token,
-    error: state.profile.error,
-    waiting: state.profile.waiting,
+    error: state.login.error,
+    waiting: state.login.waiting,
+    session: state.login.session,
   }));
 
   useInit(() => {
     if (!select.waiting) {
-    if (store.actions.profile.isLogged()) {
+    if (select.session) {
       navigate('/profile');
     }
   }
@@ -35,13 +34,10 @@ function Login() {
 
   const callbacks = {
     onLogin: (body) => {
-      store.actions.profile.login(body);
-    },
-    isLogged: () => {
-      store.actions.profile.isLogged();
+      store.actions.login.login(body);
     },
     onLogout: () => {
-      store.actions.profile.logout();
+      store.actions.login.logout();
     },
   };
 
@@ -53,7 +49,7 @@ function Login() {
       </Head>
       <Navigation />
       <Title title={t('in')} />
-      <Form t={t} onLogin={callbacks.onLogin} error={select.error} isLogged={callbacks.isLogged}/>
+      <Form t={t} onLogin={callbacks.onLogin} error={select.error} session={select.session}/>
     </PageLayout>
   );
 }

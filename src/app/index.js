@@ -6,6 +6,9 @@ import Basket from "./basket";
 import Article from "./article";
 import Login from "./login";
 import Profile from "./profile";
+import useStore from '../hooks/use-store';
+import Session from '../containers/session';
+import useInit from '../hooks/use-init';
 
 /**
  * Приложение
@@ -14,6 +17,16 @@ import Profile from "./profile";
 function App() {
 
   const activeModal = useSelector(state => state.modals.name);
+
+  const store = useStore(); 
+
+  const select = useSelector((state) => ({
+    session: state.login.session,
+  }));
+
+  useInit(() => {
+    store.actions.login.checkSession();
+  }, [select.session]);
 
   return (
     <>

@@ -1,0 +1,15 @@
+.CommentLogIn {
+    margin-left: 40px;
+    color: #000;
+    font-family: Arial;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.CommentLogIn-link {
+    cursor: pointer;
+    color: #0087E9;
+    text-decoration-line: underline;
+}

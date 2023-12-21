@@ -1,0 +1,45 @@
+.Comment {
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 40px 30px 40px;
+}
+
+.Comment-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.Comment-user {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+    margin-right: 10px;
+}
+
+.Comment-date {
+    margin: 0;
+    color: #666;
+}
+
+.Comment-text {
+    margin: 10px 0 10px 0;
+}
+
+.Comment-btn {
+    border: none;
+    background: transparent;
+    color: #0087E9;
+    font-size: 12px;
+    padding: 0;
+    cursor: pointer;
+}
+
+.Comment-children {
+    margin-left: 30px;
+    /* width: 80%; */
+}

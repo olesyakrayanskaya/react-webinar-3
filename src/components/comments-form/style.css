@@ -1,0 +1,50 @@
+.CommentForm {
+    color: #000;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 40px;
+    min-height: 76px;
+}
+
+.CommentForm--ans {
+    margin-left: 0px;
+    min-height: 80px;
+}
+
+.CommentForm-title {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.CommentForm-textarea {
+    min-height: 80px;
+    resize: vertical;
+    border: 1px solid #666;
+    background: #FFF;
+    box-shadow: 0px 1px 4px 0px rgba(102, 102, 102, 0.10) inset;
+    font-size: 14px;
+    width: calc(100% - 80px);
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+.CommentForm-textarea::placeholder {
+    color: #000;
+    font-family: Arial;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.CommentForm-btn {
+    cursor: pointer;
+    width: 90px;
+    height: 21px;
+}
+
+.CommentForm-btn--send {
+    margin-right: 10px;
+}

@@ -11,6 +11,7 @@
 .CommentForm--ans {
     margin-left: 0px;
     min-height: 80px;
+    margin-top: 27px;
 }
 
 .CommentForm-title {
@@ -19,15 +20,20 @@
 }
 
 .CommentForm-textarea {
-    min-height: 80px;
+    min-height: 62px;
     resize: vertical;
     border: 1px solid #666;
     background: #FFF;
     box-shadow: 0px 1px 4px 0px rgba(102, 102, 102, 0.10) inset;
     font-size: 14px;
-    width: calc(100% - 80px);
+    width: calc(100% - 52px);
     margin-bottom: 10px;
     padding: 5px;
+}
+
+.CommentForm--ans .CommentForm-textarea {
+    min-height: 67px;
+    width: calc(100% - 13px);
 }
 
 .CommentForm-textarea::placeholder {
@@ -47,4 +53,9 @@
 
 .CommentForm-btn--send {
     margin-right: 10px;
+}
+
+.CommentForm-btn--cancel {
+    margin-right: 10px;
+    width: 67px;
 }

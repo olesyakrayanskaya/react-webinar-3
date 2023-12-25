@@ -10,6 +10,7 @@ import listToTree from '../../utils/list-to-tree';
 
 function CommentsLayout({ comments, idArticle }) {
   const exists = useSelector((state) => state.session.exists);
+  const authUser = useSelector((state) => state.session.user.profile?.name);
 
   const [openLogInText, setOpenLogInText] = useState('false');
   const [openFormComment, setOpenFormComment] = useState('false');
@@ -54,6 +55,7 @@ function CommentsLayout({ comments, idArticle }) {
         openLogInText={openLogInText}
         onChangeLogInText={onChangeLogInText}
         exists={exists}
+        authUser={authUser}
         onChangeOpenFormComment={onChangeOpenFormComment}
         openFormComment={openFormComment}
         sendFormHandler={postFormComment}

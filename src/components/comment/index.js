@@ -7,6 +7,7 @@ import {formatTime, formatMonth} from '../../utils/comments/dateformat';
 
 function Comment({
   user,
+  authUser,
   date,
   text,
   id,
@@ -37,7 +38,13 @@ function Comment({
     <div>
       <div className="Comment">
         <div className="Comment-header">
-          <p className="Comment-user">{user}</p>
+          <>
+            {(exists && user===authUser) ? (
+              <p className="Comment-user Comment-user--login">{user}</p>
+            ) : (
+              <p className="Comment-user">{user}</p>
+            )}
+          </>
           <p className="Comment-date">
             {`${formattedDate.date} ${formattedDate.month} ${formattedDate.year} в ${formattedDate.hours}:${formattedDate.minutes}`}
           </p>

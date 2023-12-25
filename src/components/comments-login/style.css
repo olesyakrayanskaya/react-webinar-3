@@ -1,5 +1,5 @@
 .CommentLogIn {
-    margin-left: 40px;
+    margin-top: 30px;
     color: #000;
     font-family: Arial;
     font-size: 16px;
@@ -12,4 +12,13 @@
     cursor: pointer;
     color: #0087E9;
     text-decoration-line: underline;
+}
+
+.CommentLogIn-btn {
+    color: #666;
+    text-decoration-line: underline;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 16px;
 }

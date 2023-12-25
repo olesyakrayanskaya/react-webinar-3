@@ -25,6 +25,9 @@ export default {
   post: (data, user) => {
     return async (dispatch, getState, services) => {
       try {
+        if (data.text.replace(/\s/g, '').length == 0) {
+          return
+        }
         const token = localStorage.getItem('token');
         const newData = JSON.stringify(data);
         if (token) {

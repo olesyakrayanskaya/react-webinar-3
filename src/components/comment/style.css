@@ -32,6 +32,7 @@
 
 .Comment-text {
     margin: 10px 0 10px 0;
+    overflow-wrap: break-word;
 }
 
 .Comment-btn {
@@ -43,7 +44,6 @@
     cursor: pointer;
 }
 
-.Comment-children {
+.Comment-children--margin {
     margin-left: 30px;
-    /* width: 80%; */
 }

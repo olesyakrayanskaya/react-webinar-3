@@ -44,8 +44,8 @@ function CommentsLayout({ comments, idArticle }) {
     }
   };
 
-  function createComment(item) {
-    let children = item.children.map((ch) => createComment(ch));
+  function createComment(item, depth = 0) {
+    let children = item.children.map((ch) => createComment(ch, depth + 1));
 
     let result = (
       <Comment
@@ -62,6 +62,7 @@ function CommentsLayout({ comments, idArticle }) {
         openFormComment={openFormComment}
         sendFormHandler={postFormComment}
         children={children}
+        depth={depth}
       />
     );
 

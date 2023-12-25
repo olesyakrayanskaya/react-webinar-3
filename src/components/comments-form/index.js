@@ -1,16 +1,16 @@
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useState, forwardRef } from "react";
 import PropTypes from 'prop-types';
 import './style.css';
 
-function CommentForm({
+const CommentForm = forwardRef(function ({
   title,
   exists,
   type = false,
   onChangeOpenFormComment,
   commentId,
   postFormHandler,
-  user
-}) {
+  user,
+}, ref) {
   const [valueArea, setValueArea] = useState('');
 
   const [reqParams, setReqParams] = useState();
@@ -35,7 +35,7 @@ function CommentForm({
   return (
     <>
       {exists ? (
-        <form onSubmit={postData} className={formClassName}>
+        <form onSubmit={postData} className={formClassName} ref={ref}>
           <p className="CommentForm-title">{title}</p>
           <textarea
             className="CommentForm-textarea"
@@ -43,7 +43,7 @@ function CommentForm({
             onChange={(e) => setValueArea(e.target.value)}
             placeholder={textAreaPlaceholderText}
           ></textarea>
-          <div className="CommentForm-footer">
+          <div className="CommentForm-footer" >
             <button
               className="CommentForm-btn CommentForm-btn--send"
               type={'submit'}
@@ -65,7 +65,7 @@ function CommentForm({
       ) : null}
     </>
   );
-}
+})
 
 Comment.propTypes = {
   title: PropTypes.string,

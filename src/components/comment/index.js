@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import CommentLogIn from '../comments-login';
 import './style.css';
@@ -17,9 +17,19 @@ function Comment({
   onChangeOpenFormComment,
   openFormComment,
   sendFormHandler,
-  children
+  children,
+  depth
 }) {
   const dataDate = new Date(date);
+
+  const formRef = useRef();
+
+  useEffect(() => {
+    // console.log(formRef.current)
+    if (formRef.current && openFormComment === id) {
+      formRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    }
+  }, [openFormComment]);
 
   const formattedDate = {
     date: dataDate.getDate(),
@@ -35,11 +45,11 @@ function Comment({
   };
 
   return (
-    <div>
+    <div ref={formRef}>
       <div className="Comment">
         <div className="Comment-header">
           <>
-            {(exists && user===authUser) ? (
+            {exists && user === authUser ? (
               <p className="Comment-user Comment-user--login">{user}</p>
             ) : (
               <p className="Comment-user">{user}</p>
@@ -61,19 +71,26 @@ function Comment({
         {openLogInText === id ? (
           <CommentLogIn exists={exists} onChangeLogInText={onChangeLogInText} />
         ) : null}
-        {openFormComment === id ? (
-          <CommentForm
-            title={'Новый ответ'}
-            exists={exists}
-            type={true}
-            onChangeOpenFormComment={onChangeOpenFormComment}
-            commentId={id}
-            postFormHandler={sendFormHandler}
-            user={user}
-          />
-        ) : null}
       </div>
-      <div className="Comment-children">{children}</div>
+      {depth < 5 ? (
+        <div className="Comment-children Comment-children--margin">
+          {children}
+        </div>
+      ) : (
+        <div className="Comment-children">{children}</div>
+      )}
+      {openFormComment === id ? (
+        <CommentForm
+          title={'Новый ответ'}
+          exists={exists}
+          type={true}
+          onChangeOpenFormComment={onChangeOpenFormComment}
+          commentId={id}
+          postFormHandler={sendFormHandler}
+          user={user}
+          // ref={formRef}
+        />
+      ) : null}
     </div>
   );
 }

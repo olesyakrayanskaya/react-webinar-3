@@ -10,6 +10,7 @@ const CommentForm = forwardRef(function ({
   commentId,
   postFormHandler,
   user,
+  depth,
 }, ref) {
   const [valueArea, setValueArea] = useState('');
 
@@ -31,11 +32,12 @@ const CommentForm = forwardRef(function ({
 
   const formClassName = type ? "CommentForm CommentForm--ans" : "CommentForm";
   const textAreaPlaceholderText = type ? `Мой ответ для  ${user}` : "Текст";
+  let formMrg = depth < 5 ? depth*30 || 40 : 40;
 
   return (
     <>
       {exists ? (
-        <form onSubmit={postData} className={formClassName} ref={ref}>
+        <form onSubmit={postData} className={formClassName} ref={ref} style={{marginLeft: formMrg}}>
           <p className="CommentForm-title">{title}</p>
           <textarea
             className="CommentForm-textarea"

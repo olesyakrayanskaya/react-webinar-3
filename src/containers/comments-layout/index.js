@@ -7,12 +7,12 @@ import CommentForm from '../../components/comments-form';
 import { useDispatch } from 'react-redux';
 import commentsActions from '../../store-redux/comments/actions';
 import listToTree from '../../utils/list-to-tree';
-import { useLocation } from "react-router-dom";
+
 
 function CommentsLayout({ comments, idArticle }) {
   const exists = useSelector((state) => state.session.exists);
   const authUser = useSelector((state) => state.session.user.profile?.name);
-  const location = useLocation();
+
 
   const [openLogInText, setOpenLogInText] = useState('false');
   const [openFormComment, setOpenFormComment] = useState('false');
@@ -77,7 +77,7 @@ function CommentsLayout({ comments, idArticle }) {
       <TitleComment amount={comments.length} />
       {newCommentsList.map((item) => item)}
       {openLogInText === 'false' ? (
-        <CommentLogIn exists={exists} type={openLogInText} location={location}
+        <CommentLogIn exists={exists} type={openLogInText}
         />
       ) : null}
       {openFormComment === 'false' ? (

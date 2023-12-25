@@ -2,8 +2,9 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import './style.css';
+import { useLocation } from 'react-router-dom';
 
-function CommentLogIn({ exists, type, onChangeLogInText, location }) {
+function CommentLogIn({ exists, type, onChangeLogInText }) {
   return (
     <>
       {!exists ? (
@@ -11,7 +12,7 @@ function CommentLogIn({ exists, type, onChangeLogInText, location }) {
           <Link
             className="CommentLogIn-link"
             to={'/login'}
-            state={{ back: location.pathname }}
+            state={{ back: useLocation().pathname }}
           >
             Войдите
           </Link>

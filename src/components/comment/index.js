@@ -25,7 +25,6 @@ function Comment({
   const formRef = useRef();
 
   useEffect(() => {
-    // console.log(formRef.current)
     if (formRef.current && openFormComment === id) {
       formRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
@@ -88,7 +87,7 @@ function Comment({
           commentId={id}
           postFormHandler={sendFormHandler}
           user={user}
-          // ref={formRef}
+          depth={depth}
         />
       ) : null}
     </div>

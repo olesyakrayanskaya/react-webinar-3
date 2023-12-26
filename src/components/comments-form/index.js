@@ -16,6 +16,10 @@ const CommentForm = forwardRef(function ({
 
   const [reqParams, setReqParams] = useState();
 
+  const mrgLeft = 40;
+  const mrgLevel = 30;
+  const maxLevel = 5;
+
   useEffect(() => {
     setReqParams((state) => ({
       ...state,
@@ -32,7 +36,7 @@ const CommentForm = forwardRef(function ({
 
   const formClassName = type ? "CommentForm CommentForm--ans" : "CommentForm";
   const textAreaPlaceholderText = type ? `Мой ответ для  ${user}` : "Текст";
-  let formMrg = depth < 5 ? depth*30 || 40 : 40;
+  let formMrg = depth < maxLevel ? depth*mrgLevel || mrgLeft : mrgLeft;
 
   return (
     <>
